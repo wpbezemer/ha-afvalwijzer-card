@@ -25,16 +25,6 @@ Deze card is getest met de [homeassistant-afvalwijzer](https://github.com/xirixi
 
 Installeer eerst de Afvalwijzer integratie via HACS voordat je deze card gebruikt.
 
-## GitHub repository aanmaken
-
-1. Maak een nieuwe **public** repo aan op GitHub genaamd `afvalwijzer-card`
-2. Upload alle bestanden uit deze zip naar de root van de repo
-3. Ga naar **Releases** → **Create a new release**
-4. Klik op **Choose a tag** en typ `v1.0.0` → **Create new tag**
-5. Klik op **Publish release**
-
-De `release.yml` GitHub Action voegt `afvalwijzer-card.js` automatisch toe als download bij elke release. De `validate.yml` controleert bij elke push of de repo HACS-compatibel is — de status zie je onder het tabblad **Actions**.
-
 ## Installatie via HACS
 
 1. Ga naar HACS → Frontend
