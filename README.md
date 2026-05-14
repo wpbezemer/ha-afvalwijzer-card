@@ -6,7 +6,7 @@ Werkt samen met de [Afvalwijzer](https://github.com/xirixiz/homeassistant-afvalw
 
 > ✅ Getest met [homeassistant-afvalwijzer](https://github.com/xirixiz/homeassistant-afvalwijzer)
 
-![Afvalwijzer Card preview](https://raw.githubusercontent.com/wpbezemer/afvalwijzer-card/main/afvalwijzer-card-preview.png)
+![Afvalwijzer Card preview](https://raw.githubusercontent.com/wpbezemer/ha-afvalwijzer-card/main/afvalwijzer-card-preview.png)
 
 ## Functies
 
