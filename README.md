@@ -29,7 +29,7 @@ Installeer eerst de Afvalwijzer integratie via HACS voordat je deze card gebruik
 
 1. Ga naar HACS → Frontend
 2. Klik op de drie puntjes rechtsboven → **Custom repositories**
-3. Voeg toe: `https://github.com/YOUR_USERNAME/afvalwijzer-card` als type **Dashboard**
+3. Voeg toe: `https://github.com/wpbezemer/ha-afvalwijzer-card` als type **Dashboard**
 4. Zoek naar **Afvalwijzer Card** en installeer
 5. Herstart Home Assistant of ververs de browser
 
