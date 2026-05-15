@@ -1,15 +1,11 @@
 # Afvalwijzer Card
-
 Een mooie Lovelace custom card voor Home Assistant die ophaaldata van afvalfracties toont met urgentie-indicatoren.
-
 Werkt samen met de [Afvalwijzer](https://github.com/xirixiz/homeassistant-afvalwijzer) integratie van [@xirixiz](https://github.com/xirixiz). Getest en ontwikkeld op basis van deze integratie.
-
 > ✅ Getest met [homeassistant-afvalwijzer](https://github.com/xirixiz/homeassistant-afvalwijzer)
 
 ![Afvalwijzer Card preview](https://raw.githubusercontent.com/wpbezemer/ha-afvalwijzer-card/main/afvalwijzer-card-preview.png)
 
 ## Functies
-
 - Toont ophaaldata voor Restafval, GFT, Papier en Plastic/PMD
 - Automatische urgentie-kleuren (Vandaag / Morgen / Deze week / Volgende week)
 - Sorteert automatisch op dichtstbijzijnde ophaaldag
@@ -17,16 +13,14 @@ Werkt samen met de [Afvalwijzer](https://github.com/xirixiz/homeassistant-afvalw
 - Keuze tussen week start op Maandag of Zondag
 - Visuele editor in de Lovelace UI
 - Al-typend filteren bij toevoegen van entiteiten
-- Werkt met de `days_until_collection_date` attribuut
+- Werkt met het `days_until_collection_date` attribuut
 
 ## Vereisten
-
 Deze card is getest met de [homeassistant-afvalwijzer](https://github.com/xirixiz/homeassistant-afvalwijzer) integratie van [@xirixiz](https://github.com/xirixiz). De sensoren van deze integratie leveren o.a. het `days_until_collection_date` attribuut waar de card gebruik van maakt.
 
 Installeer eerst de Afvalwijzer integratie via HACS voordat je deze card gebruikt.
 
 ## Installatie via HACS
-
 1. Ga naar HACS → Frontend
 2. Klik op de drie puntjes rechtsboven → **Custom repositories**
 3. Voeg toe: `https://github.com/wpbezemer/ha-afvalwijzer-card` als type **Dashboard**
@@ -34,7 +28,6 @@ Installeer eerst de Afvalwijzer integratie via HACS voordat je deze card gebruik
 5. Herstart Home Assistant of ververs de browser
 
 ## Handmatige installatie
-
 1. Download `afvalwijzer-card.js`
 2. Zet het bestand in `/config/www/afvalwijzer-card.js`
 3. Ga naar **Instellingen → Dashboards → Resources**
@@ -44,11 +37,9 @@ Installeer eerst de Afvalwijzer integratie via HACS voordat je deze card gebruik
 ## Configuratie
 
 ### Via de visuele editor
-
 Voeg een nieuwe kaart toe en zoek op **Afvalwijzer Card**. Je kunt entiteiten toevoegen door te typen — de editor filtert automatisch op beschikbare entiteiten.
 
 ### Via YAML
-
 ```yaml
 type: custom:afvalwijzer-card
 title: Afvalkalender
@@ -61,7 +52,6 @@ entities:
 ```
 
 ### Opties
-
 | Optie | Type | Standaard | Omschrijving |
 |-------|------|-----------|--------------|
 | `title` | string | `Afvalkalender` | Titel van de kaart |
@@ -69,7 +59,6 @@ entities:
 | `week_starts_on` | `monday` \| `sunday` | `monday` | Eerste dag van de week |
 
 ## Urgentie-niveaus
-
 | Label | Wanneer | Kleur |
 |-------|---------|-------|
 | **Vandaag!** | Ophaaldag is vandaag | Rood |
@@ -79,7 +68,6 @@ entities:
 | **X dagen** | Later | Gedimpt grijs |
 
 ## Ondersteunde fracties
-
 De kaart herkent automatisch de fractie op basis van de `friendly_name` van de entiteit en toont het bijbehorende icoon en kleur:
 
 | Fractie | Herkend op | Kleur |
@@ -89,6 +77,36 @@ De kaart herkent automatisch de fractie op basis van de `friendly_name` van de e
 | Papier | `papier`, `blauw`, `karton` | Blauw |
 | Restafval | `rest`, `grijs` | Grijs |
 
-## Licentie
+## Entity pictures (optioneel)
 
+De `images/` map bevat passende SVG icoontjes per fractie. Je kunt deze gebruiken als `entity_picture` zodat de icoontjes ook elders in Home Assistant (bijv. in de standaard entiteiten-kaart of het dashboard) worden getoond.
+
+Je hoeft niets te downloaden — verwijs direct naar de raw GitHub URL:
+
+```yaml
+homeassistant:
+  customize:
+    sensor.afvalwijzer_gft:
+      entity_picture: https://raw.githubusercontent.com/wpbezemer/ha-afvalwijzer-card/main/images/gft.svg
+    sensor.afvalwijzer_papier:
+      entity_picture: https://raw.githubusercontent.com/wpbezemer/ha-afvalwijzer-card/main/images/papier.svg
+    sensor.afvalwijzer_plastic:
+      entity_picture: https://raw.githubusercontent.com/wpbezemer/ha-afvalwijzer-card/main/images/plastic.svg
+    sensor.afvalwijzer_restafval:
+      entity_picture: https://raw.githubusercontent.com/wpbezemer/ha-afvalwijzer-card/main/images/restafval.svg
+```
+
+> De card zelf heeft de icoontjes al ingebakken — deze stap is alleen nodig als je de icoontjes ook elders in HA wil gebruiken.
+
+## GitHub repository aanmaken
+
+1. Maak een nieuwe **public** repo aan op GitHub genaamd `afvalwijzer-card`
+2. Upload alle bestanden uit deze zip naar de root van de repo
+3. Ga naar **Releases** → **Create a new release**
+4. Klik op **Choose a tag** en typ `v1.0.0` → **Create new tag**
+5. Klik op **Publish release**
+
+De `release.yml` GitHub Action voegt `afvalwijzer-card.js` automatisch toe als download bij elke release. De `validate.yml` controleert bij elke push of de repo HACS-compatibel is — de status zie je onder het tabblad **Actions**.
+
+## Licentie
 MIT License
