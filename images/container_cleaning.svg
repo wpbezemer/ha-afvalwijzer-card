@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <defs>
+    <!-- 4-pointed sparkle star centered at 0,0 -->
+    <path id="spark" d="M0,-2 L0.4,-0.4 L2,0 L0.4,0.4 L0,2 L-0.4,0.4 L-2,0 L-0.4,-0.4 Z" fill="#7c3aed"/>
+    <path id="spark-sm" d="M0,-1.4 L0.28,-0.28 L1.4,0 L0.28,0.28 L0,1.4 L-0.28,0.28 L-1.4,0 L-0.28,-0.28 Z" fill="#7c3aed"/>
+  </defs>
+
+  <!-- Sparkles -->
+  <use href="#spark" transform="translate(12, 2)"/>
+  <use href="#spark-sm" transform="translate(3, 3)"/>
+  <use href="#spark" transform="translate(21, 4)"/>
+  <use href="#spark-sm" transform="translate(1.5, 12)"/>
+  <use href="#spark" transform="translate(22.5, 11)"/>
+  <use href="#spark-sm" transform="translate(21, 18)"/>
+
+  <!-- Lid handle -->
+  <rect x="10.5" y="5" width="3" height="2" rx="0.8" fill="#a855f7" stroke="#2e1065" stroke-width="0.9"/>
+
+  <!-- Lid -->
+  <rect x="4" y="7" width="16" height="2.5" rx="1" fill="#a855f7" stroke="#2e1065" stroke-width="0.9"/>
+
+  <!-- Body -->
+  <path d="M5.5 9.5 L18.5 9.5 L17.5 21 Q17.5 21.5 17 21.5 H7 Q6.5 21.5 6.5 21 Z" fill="#9333ea" stroke="#2e1065" stroke-width="0.9"/>
+</svg>
