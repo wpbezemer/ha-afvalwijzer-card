@@ -1,4 +1,6 @@
 // afvalwijzer-card.js
+const AFVALWIJZER_CARD_VERSION = '1.1.0';
+console.info(`%c AFVALWIJZER-CARD %c v${AFVALWIJZER_CARD_VERSION} `, 'background:#9333ea;color:#fff;padding:2px 4px;border-radius:3px', 'background:#333;color:#fff;padding:2px 4px;border-radius:3px');
 
 class AfvalwijzerCardEditor extends HTMLElement {
   constructor() {
@@ -36,7 +38,7 @@ class AfvalwijzerCardEditor extends HTMLElement {
     const all = Object.keys(this._hass.states).sort();
     if (!q) {
       return all.filter(id =>
-        ['afval','papier','plastic','gft','restafval','rest','bio','pmd']
+        ['afval','papier','plastic','gft','restafval','rest','bio','pmd','schoon','cleaning','reinig']
           .some(k => id.toLowerCase().includes(k))
       ).slice(0, 10);
     }
@@ -253,6 +255,8 @@ class AfvalwijzerCard extends HTMLElement {
       return { bg: '#D4E8F6', fg: '#185FA5', accent: '#2B7FC7' };
     if (n.includes('rest') || n.includes('grijs'))
       return { bg: '#E5E5E2', fg: '#444441', accent: '#888780' };
+    if (n.includes('schoon') || n.includes('cleaning') || n.includes('reinig'))
+      return { bg: '#EDE9FE', fg: '#6D28D9', accent: '#7C3AED' };
     return { bg: '#E5E5E2', fg: '#444441', accent: '#888780' };
   }
 
@@ -268,6 +272,18 @@ class AfvalwijzerCard extends HTMLElement {
     // ti-file-text (official tabler path)
     if (n.includes('papier') || n.includes('blauw') || n.includes('karton'))
       return `<svg ${base}><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"/><path d="M9 9l1 0"/><path d="M9 13l6 0"/><path d="M9 17l6 0"/></svg>`;
+    if (n.includes('schoon') || n.includes('cleaning') || n.includes('reinig'))
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path d="M12,-2 L12.4,-0.4 L2,0 L0.4,0.4 L0,2 L-0.4,0.4 L-2,0 L-0.4,-0.4 Z" fill="#7c3aed" transform="translate(12,2)"/>
+        <path d="M0,-1.4 L0.28,-0.28 L1.4,0 L0.28,0.28 L0,1.4 L-0.28,0.28 L-1.4,0 L-0.28,-0.28 Z" fill="#7c3aed" transform="translate(3,3)"/>
+        <path d="M0,-2 L0.4,-0.4 L2,0 L0.4,0.4 L0,2 L-0.4,0.4 L-2,0 L-0.4,-0.4 Z" fill="#7c3aed" transform="translate(21,4)"/>
+        <path d="M0,-1.4 L0.28,-0.28 L1.4,0 L0.28,0.28 L0,1.4 L-0.28,0.28 L-1.4,0 L-0.28,-0.28 Z" fill="#7c3aed" transform="translate(1.5,12)"/>
+        <path d="M0,-2 L0.4,-0.4 L2,0 L0.4,0.4 L0,2 L-0.4,0.4 L-2,0 L-0.4,-0.4 Z" fill="#7c3aed" transform="translate(22.5,11)"/>
+        <path d="M0,-1.4 L0.28,-0.28 L1.4,0 L0.28,0.28 L0,1.4 L-0.28,0.28 L-1.4,0 L-0.28,-0.28 Z" fill="#7c3aed" transform="translate(21,18)"/>
+        <rect x="10.5" y="5" width="3" height="2" rx="0.8" fill="#a855f7" stroke="#2e1065" stroke-width="0.9"/>
+        <rect x="4" y="7" width="16" height="2.5" rx="1" fill="#a855f7" stroke="#2e1065" stroke-width="0.9"/>
+        <path d="M5.5 9.5 L18.5 9.5 L17.5 21 Q17.5 21.5 17 21.5 H7 Q6.5 21.5 6.5 21 Z" fill="#9333ea" stroke="#2e1065" stroke-width="0.9"/>
+      </svg>`;
     // ti-trash (official tabler path)
     return `<svg ${base}><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 7l16 0"/><path d="M10 11l0 6"/><path d="M14 11l0 6"/><path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"/><path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"/></svg>`;
   }
